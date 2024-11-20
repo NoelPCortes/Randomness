@@ -8,7 +8,7 @@ int main(){
     int validationStatus;
 
     do{
-    printf("\nEnter username: ");
+    printf("Enter username: ");
     fgets(username, sizeof(username), stdin);
     username[strcspn(username, "\n")] = '\0';
 
