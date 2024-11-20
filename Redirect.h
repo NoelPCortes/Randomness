@@ -1,0 +1,1 @@
+int VerificationUsernameIFValid(char *username);
