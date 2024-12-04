@@ -3,6 +3,8 @@
 #include <ctype.h>
 #include "Redirect.h"
 
+int VerificationUsernameIFValid(char *username);
+
 int VerificationUsernameIFValid(char *username){
 
     int len = strlen(username);

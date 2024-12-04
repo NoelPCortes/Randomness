@@ -1,21 +1,20 @@
 #include <stdio.h>
 
+int power(int x, int y);
+
+int power(int x, int y){
+    int res = 1;
+    for(int i = 1; i <= y; i++){
+        res *= x;
+    }
+    return res;
+}
+
 int main(){
 
-    int num, i = 1;
-
-    printf("Enter how many rows: ");
-    scanf("%d", &num);
-
-    do{
-        for(int j = 1; j <= num * 2 - 1; j++){
-            if(j >= num - i + 1 && j <= num + i - 1){
-                printf("*");
-            } else {
-                printf(" ");
-            }
-        }
-        printf("\n");
-        i++;
-    }while(i <= num);
+    int num1, num2, res = 0;
+    printf("Enter a base, then expo: ");
+    scanf("%d%d", &num1, &num2);
+    res = power(num1, num2);
+    printf("Result: %d", res);
 }

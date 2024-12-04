@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include "Redirect.h"
 
 int VerificationUsernameIFValid(char *username){
 
