@@ -19,12 +19,9 @@ int main(){
         scanf("%d", &arr2[i]);
     }
 
-    for(int i = 0; i < lengthArr1; i++){
+    for(int i = 0; i < lengthMerged; i++){
         mergedArray[i] = arr1[i];
-    }
-
-    for(int i = 0; i < lengthArr2; i++){
-        mergedArray[lengthArr1 + i] = arr2[i];
+        mergedArray[i] = arr2[i];
     }
 
     int temp;
