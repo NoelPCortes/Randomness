@@ -19,6 +19,14 @@ typedef struct
     int level;
 } user;
 
+struct student
+{
+
+    char students[20];
+    float GPA;
+
+};
+
 int main(){
 
     struct Subdivision House1;
@@ -40,5 +48,16 @@ int main(){
 
     printf("\n\nUser: %s\nID: %d\nLevel: %d\n", user1.user, user1.id, user1.level);
     printf("\nUser: %s\nID: %d\nLevel: %d\n", user2.user, user2.id, user2.level);
+
+    struct student student1 = {"VanWhat", 4.0};
+    struct student student2 = {"MashupChilly", 3.5};
+    struct student student3 = {"Yamasheet", 3.8};
+    struct student student4 = {"Bandan303", 3.3};
+
+    struct student students[] = {student1, student2, student3, student4};
+
+    for(int i = 0; i < sizeof(students)/sizeof(students[0]); i++){
+        printf("Name: %-20sGPA: %.2f\n", students[i].students, students[i].GPA);
+    }
 
 }
