@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdbool.h>
 #include "Redirect.h"
 
 int VerificationUsernameIFValid(char *username){
@@ -25,20 +26,31 @@ int VerificationUsernameIFValid(char *username){
 
 int main(){
 
-    char command[50], username[50];
-    int validationStatus;
+    char command[50], username[50], startOptions[50], shiftingOption, optionConfirmation = false;
+    int validationStatus, userLogin = false, userGuest = false;
 
     do{
-    printf("Enter username: ");
-    fgets(username, sizeof(username), stdin);
-    username[strcspn(username, "\n")] = '\0';
+        char scriptLogin[10] = "Login", scriptGuest[20] = "Play as Guest", scriptExit[10] = "Exit";
+        printf("%-20s\n", scriptLogin);
+        printf("%-20s\n", scriptGuest);
+        printf("%-20s\n", scriptExit);
+        scanf("%c", &shiftingOption);
+    }while(optionConfirmation == false);
+    
 
-    validationStatus = VerificationUsernameIFValid(username);
-    }while(validationStatus != 1);
+    if(userLogin == true){
+        do{
+        printf("Enter username: ");
+        fgets(username, sizeof(username), stdin);
+        username[strcspn(username, "\n")] = '\0';
+
+        validationStatus = VerificationUsernameIFValid(username);
+        }while(validationStatus != 1);
 
 
-    if(validationStatus == 1){
-        printf("\nValid Username.");
+        if(validationStatus == 1){
+            printf("\nValid Username.");
+        }
     }
 
 }
