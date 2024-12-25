@@ -47,7 +47,7 @@ int main(){
     user user2 = {"MashupChilly", 987654321, 24};
 
     printf("\n\nUser: %s\nID: %d\nLevel: %d\n", user1.user, user1.id, user1.level);
-    printf("\nUser: %s\nID: %d\nLevel: %d\n", user2.user, user2.id, user2.level);
+    printf("\nUser: %s\nID: %d\nLevel: %d\n\n\n", user2.user, user2.id, user2.level);
 
     struct student student1 = {"VanWhat", 4.0};
     struct student student2 = {"MashupChilly", 3.5};
