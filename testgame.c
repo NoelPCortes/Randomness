@@ -53,4 +53,37 @@ int main(){
         }
     }
 
+    char choice[10];
+
+    while(true){
+        printf("\n\nChoose level:\nEASY\nNORMAL\nHARD\nEXPERT\n\n>");
+        fgets(choice, sizeof(choice), stdin);
+
+        choice[strlen(choice)-1] = '\0';
+
+        for (int i = 0; i < strlen(choice); i++) {
+            choice[i] = toupper(choice[i]);
+        }
+
+        if(strcmp(choice, "EASY") == 0){
+            printf("You've chosen Easy difficulty.");
+            break;
+        }
+        else if(strcmp(choice, "NORMAL") == 0){
+            printf("You've chosen Normal difficulty.");
+            break;
+        }
+        else if(strcmp(choice, "HARD") == 0){
+            printf("You've chosen Hard difficulty");
+            break;
+        }
+        else if(strcmp(choice, "EXPERT") == 0){
+            printf("You've chosen Expert difficulty");
+            break;
+        }
+        else{
+            printf("Invalid choice");
+        }
+    };
+
 }

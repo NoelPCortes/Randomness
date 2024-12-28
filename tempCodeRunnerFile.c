@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <time.h>
 #include <ctype.h>
 
 typedef char name[20];
 
-typedef enum{
-    EASY,
+enum level{
+    EASY = 1,
     NORMAL,
     HARD,
     EXPERT
-} level;
+};
 
 typedef struct
 {
@@ -21,7 +22,9 @@ typedef struct
 
 int main(){
 
-    srand(time(0));
+    srand(time(NULL));
+
+    enum level choices;
 
     user username;
     user IDNO;
@@ -33,25 +36,37 @@ int main(){
 
     printf("\nUsername: %sID: %d", username.username, IDNO.ID);
 
-    char choice[20];
+    char choice[10];
 
-    printf("\n\nChoose level:\nEASY\nNORMALs\nHARD\nEXPERT\n\n>");
-    fgets(choice, sizeof(choice), stdin);
+    while(true){
+        printf("\n\nChoose level:\nEASY\nNORMAL\nHARD\nEXPERT\n\n>");
+        fgets(choice, sizeof(choice), stdin);
 
-    for (int i = 0; i < strlen(choice); i++) {
-        choice[i] = toupper(choice[i]);
-    }
+        choice[strlen(choice)-1] = '\0';
 
-    if(strcmp(choice, "EASY") == 1){
-        printf("You've chosen Easy difficulty");
-    } else if(strcmp(choice, "NORMAL") == 1){
-        printf("You've chosen Normal difficulty");
-    } else if(strcmp(choice, "HARD") == 1){
-        printf("You've chosen Hard difficulty");
-    } else if(strcmp(choice, "EXPERT") == 1){
-        printf("You've chosen Expert difficulty");
-    } else {
-        printf("Not a valid difficulty");
-    }
+        for (int i = 0; i < strlen(choice); i++) {
+            choice[i] = toupper(choice[i]);
+        }
+
+        if(strcmp(choice, "EASY") == 0){
+            printf("You've chosen Easy difficulty.");
+            break;
+        }
+        else if(strcmp(choice, "NORMAL") == 0){
+            printf("You've chosen Normal difficulty.");
+            break;
+        }
+        else if(strcmp(choice, "HARD") == 0){
+            printf("You've chosen Hard difficulty");
+            break;
+        }
+        else if(strcmp(choice, "EXPERT") == 0){
+            printf("You've chosen Expert difficulty");
+            break;
+        }
+        else{
+            printf("Invalid choice");
+        }
+    };
 
 }
