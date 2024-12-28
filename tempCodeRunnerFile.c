@@ -42,13 +42,13 @@ int main(){
         choice[i] = toupper(choice[i]);
     }
 
-    if(strcmp(choice, "EASY") == 0){
+    if(strcmp(choice, "EASY") == 1){
         printf("You've chosen Easy difficulty");
-    } else if(strcmp(choice, "NORMAL") == 0){
+    } else if(strcmp(choice, "NORMAL") == 1){
         printf("You've chosen Normal difficulty");
-    } else if(strcmp(choice, "HARD") == 0){
+    } else if(strcmp(choice, "HARD") == 1){
         printf("You've chosen Hard difficulty");
-    } else if(strcmp(choice, "EXPERT") == 0){
+    } else if(strcmp(choice, "EXPERT") == 1){
         printf("You've chosen Expert difficulty");
     } else {
         printf("Not a valid difficulty");
