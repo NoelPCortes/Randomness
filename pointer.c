@@ -1,48 +1,22 @@
-// Online C compiler to run C program online
 #include <stdio.h>
 
 int main() {
     
-    printf("Pointer : Demonstrate the use of & and * operator :\n--------------------------------------------------------\n");
-    
-    int m = 300;
-    float fx = 300.60;
-    char cht = 'z';
+    int num1, num2;
+    int *pNum1 = NULL, *pNum2 = NULL;
+    int pSum;
 
-    printf("m = %d\nfx = %f\ncht = %c\n", m, fx, cht);
-    
-    int *pM = NULL;
-    float *pFx = NULL;
-    char *pCht = NULL;
-    
-    
-    printf("\nUsing & operator :\n");
-    printf("-------------------------------------------------------- \n");
-    
-    printf("address of m = %p\naddress of fx = %p\naddress of cht = %p\n", &m, &fx, &cht);
-    
-    printf("\nUsing & and * operator:\n");
-    printf("-------------------------------------------------------- \n");
-    
-    pM = &m;
-    pFx = &fx;
-    pCht = &cht;
-    
-    printf("value at address of m = %d\n", *(&m));
-    printf("value at address of fx = %f\n", *(&fx));
-    printf("value at address of cht = %c\n", *(&cht));
+    printf("Input the first number : ");
+    scanf("%d", &num1);
 
-    printf("\nUsing only pointer variable:\n");
-    printf("-------------------------------------------------------- \n");
+    printf("Input the second number : ");
+    scanf("%d", &num2);
 
-    printf("address of m = %p\naddress of fx = %p\naddress of cht = %p\n", pM, pFx, pCht);
+    pNum1 = &num1;
+    pNum2 = &num2;
+    pSum = *pNum1 + *pNum2;
 
-    printf("\nUsing only pointer operator:\n");
-    printf("-------------------------------------------------------- \n");
-
-    printf("value at address of m = %d\n", *pM);
-    printf("value at address of fx = %f\n", *pFx);
-    printf("value at address of cht = %c\n", *pCht);
+    printf("The sum of the entered numbers is : %d", pSum);
 
     return 0;
 }
