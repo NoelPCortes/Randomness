@@ -1,20 +1,22 @@
 #include <stdio.h>
-#include <math.h>
 
-int findSquared(int *);
+void findOddOrEven(int *);
 
 int main(){
 
-    int num = 20;
-    int *pNum = NULL;
-    pNum = &num;
+    int a = 4;
+    int *pA = NULL;
+    pA = &a;
 
-    int res = findSquared(pNum);
-
-    printf("Result: %d", res);
+    findOddOrEven(pA);
 
 }
 
-int findSquared(int *num){
-    return pow(*num, 2);
+void findOddOrEven(int *num){
+
+    if(*num % 2 == 0)
+        printf("Is even");
+    else
+        printf("Is odd");
+
 }
