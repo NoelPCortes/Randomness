@@ -1,22 +1,22 @@
 #include <stdio.h>
 
-void findOddOrEven(int *);
+int fact(int);
 
 int main(){
 
-    int a = 4;
-    int *pA = NULL;
-    pA = &a;
+    int sum;
+    sum = fact(1)/1+fact(2)/2+fact(3)/3+fact(4)/4+fact(5)/5;
 
-    findOddOrEven(pA);
+    printf("%d", sum);
 
 }
 
-void findOddOrEven(int *num){
+int fact(int n){
 
-    if(*num % 2 == 0)
-        printf("Is even");
-    else
-        printf("Is odd");
-
+    int num = 0, f = 1;
+    while(num<=n-1){
+        f = f+f*num;
+        num++;
+    }
+    return f;
 }
