@@ -1,22 +1,20 @@
 #include <stdio.h>
 
-int fact(int);
+void function(int num){
+    printf("Value of variable: %d\nAddress of Variable %p\n", num, &num);
+}
 
 int main(){
 
-    int sum;
-    sum = fact(1)/1+fact(2)/2+fact(3)/3+fact(4)/4+fact(5)/5;
+    int num;
 
-    printf("%d", sum);
+    void (*function_pointer)(int);
 
-}
+    function_pointer = &function;
 
-int fact(int n){
+    printf("Enter a number to be printed: ");
+    scanf("%d", &num);
 
-    int num = 0, f = 1;
-    while(num<=n-1){
-        f = f+f*num;
-        num++;
-    }
-    return f;
+    (*function_pointer)(num);
+
 }
