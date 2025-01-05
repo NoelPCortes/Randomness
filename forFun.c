@@ -2,34 +2,44 @@
 #include <time.h>
 #include <stdlib.h>
 
+typedef char chars[100];
+
 int add(int, int);
 int subtract(int, int);
 int multiply(int, int);
 int divide(int, int);
+int (*select_opetator())(int, int);
 
 int main(){
 
+    srand(time(NULL));
+
+    //randomly put in numbers inside the variables
     int num1 = rand() % 10 + 1, num2 = rand() % 10 + 1;
 
-    int (*arr_operator[])(int, int) = {add, subtract, multiply, divide};
+    int (*operation)(int, int) = select_opetator();
 
-    int res;
-    res = (*arr_operator[0])(num1, num2);
+    int res = operation(num1, num2);
+    printf("Result: %d", res);
+}
 
-    printf("%d + %d = %d\n", num1, num2, res);
+int (*select_opetator())(int x, int y){
+    chars string[] = {"Enter the number to choose the operator", "1)Add (+)", "2)Subtract (-)",
+    "3) Multiply (x)", "4) Divide (/)"};
+    //prints the string array
+    int length = sizeof(string)/sizeof(string[0]) + 1;
+    for(int i = 0; i < length; i++){
+        printf("%s\n", string[i]);
+    }
 
-    res = (*arr_operator[1])(num1, num2);
-
-    printf("%d - %d = %d\n", num1, num2, res);
-
-    res = (*arr_operator[2])(num1, num2);
-
-    printf("%d x %d = %d\n", num1, num2, res);
-
-    res = (*arr_operator[3])(num1, num2);
-
-    printf("%d / %d = %d\n", num1, num2, res);
-
+    //randomly chooses operators
+    int option = rand() % 3;
+    switch(option){
+        case 0: return add;
+        case 1: return subtract;
+        case 2: return multiply;
+        case 3: return divide;
+    }
 }
 
 int add(int x, int y){
