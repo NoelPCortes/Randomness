@@ -1,59 +1,38 @@
 #include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
+#include <stdbool.h>
 
-typedef char chars[100];
+bool freeze_c(int temperature){
+    if(temperature <= 0) return true;
+    else return false;
+}
 
-int add(int, int);
-int subtract(int, int);
-int multiply(int, int);
-int divide(int, int);
-int (*select_opetator())(int, int);
+bool freeze_f(int temperature){
+    if(temperature <= 32) return true;
+    else return false;
+}
+
+void is_freezing ( bool (*freeze_check)(int)){
+    int temperature = 0;
+    printf("Enter temperature: ");
+    scanf("%d", &temperature);
+    if(freeze_check(temperature)){
+        printf("Is freezing");
+    }
+    else
+        printf("Is not freezing");
+}
 
 int main(){
 
-    srand(time(NULL));
+    char input;
 
-    //randomly put in numbers inside the variables
-    int num1 = rand() % 10 + 1, num2 = rand() % 10 + 1;
+    printf("\nEnter (F)arenheit or (C)elsius: ");
+    input = getchar();
 
-    int (*operation)(int, int) = select_opetator();
-
-    int res = operation(num1, num2);
-    printf("Result: %d", res);
-}
-
-int (*select_opetator())(int x, int y){
-    chars string[] = {"Enter the number to choose the operator", "1)Add (+)", "2)Subtract (-)",
-    "3) Multiply (x)", "4) Divide (/)"};
-    //prints the string array
-    int length = sizeof(string)/sizeof(string[0]) + 1;
-    for(int i = 0; i < length; i++){
-        printf("%s\n", string[i]);
+    if(input == 'c'){
+        is_freezing(freeze_c);
+    }else{
+        is_freezing(freeze_f);
     }
 
-    //randomly chooses operators
-    int option = rand() % 3;
-    switch(option){
-        case 0: return add;
-        case 1: return subtract;
-        case 2: return multiply;
-        case 3: return divide;
-    }
-}
-
-int add(int x, int y){
-    return x + y;
-}
-
-int subtract(int x, int y){
-    return x - y;
-}
-
-int multiply(int x, int y){
-    return x * y;
-}
-
-int divide(int x, int y){
-    return x / y;
 }
