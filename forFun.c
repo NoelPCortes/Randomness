@@ -1,38 +1,31 @@
 #include <stdio.h>
-#include <stdbool.h>
+#include <math.h>
 
-bool freeze_c(int temperature){
-    if(temperature <= 0) return true;
-    else return false;
-}
-
-bool freeze_f(int temperature){
-    if(temperature <= 32) return true;
-    else return false;
-}
-
-void is_freezing ( bool (*freeze_check)(int)){
-    int temperature = 0;
-    printf("Enter temperature: ");
-    scanf("%d", &temperature);
-    if(freeze_check(temperature)){
-        printf("Is freezing");
-    }
-    else
-        printf("Is not freezing");
-}
+int squared_numbers(int *, int);
 
 int main(){
 
-    char input;
+    int number_arr[6] = {1, 2, 3, 4, 5, 6};
 
-    printf("\nEnter (F)arenheit or (C)elsius: ");
-    input = getchar();
+    int *pNumber_arr = NULL;
+    pNumber_arr = &number_arr;
 
-    if(input == 'c'){
-        is_freezing(freeze_c);
-    }else{
-        is_freezing(freeze_f);
+    int (*arr_squared)(int, int);
+    arr_squared = &squared_numbers;
+
+    int length = sizeof(number_arr)/sizeof(number_arr[0]);
+
+    (arr_squared)(pNumber_arr, length);
+
+    for(size_t i = 0; i < length; i++){
+        printf("%5d", number_arr[i]);
+        printf("%p", pNumber_arr[i]);
     }
 
+}
+
+int squared_numbers(int number_arr[], int arr_lenth){
+    for(size_t i = 0; i < arr_lenth; i++){
+        number_arr[i] = pow(number_arr[i], 2);
+    }
 }
