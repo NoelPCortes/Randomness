@@ -4,38 +4,44 @@
 #include <stdbool.h>
 #include "Redirect.h"
 
-int VerificationUsernameIFValid(char *username){
+void display_filler();
 
-    int len = strlen(username);
+int VerificationUsernameIFValid(char *);
 
-
-    if(len < 3 || len >= 20){
-        printf("\nUsername should atleast be 3 characters and not exceeding 20.\n\n");
-        return 0;
-    }
-
-    for(int i = 0; i < len; i++){
-        if(ispunct(username[i])){
-        printf("\nNo special characters such as \"@, #, _, !\".\n\n");
-        return 0;
-        }
-    }
-
-    return 1;
-}
+int option_made(char *);
 
 int main(){
 
     char command[50], username[50], startOptions[50], shiftingOption, optionConfirmation = false;
+    char emptyChar = ' ';
     int validationStatus, userLogin = false, userGuest = false;
 
+    display_filler();
+
     do{
-        char scriptLogin[10] = "Login", scriptGuest[20] = "Play as Guest", scriptExit[10] = "Exit";
-        printf("%-20s\n", scriptLogin);
-        printf("%-20s\n", scriptGuest);
-        printf("%-20s\n", scriptExit);
-        scanf("%c", &shiftingOption);
-    }while(optionConfirmation == false);
+        int (*option)(char *) = &option_made;
+        float accurate_option = 1;
+        char scriptLogin[] = "Login", scriptGuest[] = "Play as Guest", scriptExit[] = "Exit", choice_of_player = '>';
+        if(accurate_option == 1){
+            printf("\n%-60c%c%s\n", emptyChar, choice_of_player, scriptLogin);
+            printf("%-60c%s\n", emptyChar, scriptGuest);
+            printf("%-60c%s\n\n", emptyChar, scriptExit);
+        }
+        else if(accurate_option == 2){
+            printf("\n%-60c%c%s\n", emptyChar, scriptLogin);
+            printf("%-60c%c%s\n", emptyChar, choice_of_player, scriptGuest);
+            printf("%-60c%s\n\n", emptyChar, scriptExit);
+        }
+        else{
+            printf("\n%-60c%c%s\n", emptyChar, scriptLogin);
+            printf("%-60c%s\n", emptyChar, scriptGuest);
+            printf("%-60c%c%s\n\n", emptyChar, choice_of_player, scriptExit);
+        }
+        display_filler();
+        shiftingOption = getchar();
+        optionConfirmation = option(&shiftingOption);
+        printf("%d", *option);
+    }while(optionConfirmation == 0);
     
 
     if(userLogin == true){
@@ -86,4 +92,33 @@ int main(){
         }
     };
 
+}
+
+void display_filler(){
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 150; j++){
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+
+int VerificationUsernameIFValid(char *username){
+
+    int len = strlen(username);
+
+
+    if(len < 3 || len >= 20){
+        printf("\nUsername should atleast be 3 characters and not exceeding 20.\n\n");
+        return 0;
+    }
+
+    for(int i = 0; i < len; i++){
+        if(ispunct(username[i])){
+        printf("\nNo special characters such as \"@, #, _, !\".\n\n");
+        return 0;
+        }
+    }
+
+    return 1;
 }
