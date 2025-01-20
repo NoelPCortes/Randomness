@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include "Redirect.h"
 
+int  optionConfirmation = 0;
+
 void display_filler();
 
 int VerificationUsernameIFValid(char *);
@@ -12,35 +14,38 @@ int option_made(char *);
 
 int main(){
 
-    char command[50], username[50], startOptions[50], shiftingOption, optionConfirmation = false;
+    char command[50], username[50], startOptions[50], shiftingOption;
     char emptyChar = ' ';
     int validationStatus, userLogin = false, userGuest = false;
 
     display_filler();
 
     do{
-        int (*option)(char *) = &option_made;
         float accurate_option = 1;
         char scriptLogin[] = "Login", scriptGuest[] = "Play as Guest", scriptExit[] = "Exit", choice_of_player = '>';
+
         if(accurate_option == 1){
-            printf("\n%-60c%c%s\n", emptyChar, choice_of_player, scriptLogin);
+            printf("\n%-60c%-2c%s\n", emptyChar, choice_of_player, scriptLogin);
             printf("%-60c%s\n", emptyChar, scriptGuest);
             printf("%-60c%s\n\n", emptyChar, scriptExit);
         }
         else if(accurate_option == 2){
-            printf("\n%-60c%c%s\n", emptyChar, scriptLogin);
-            printf("%-60c%c%s\n", emptyChar, choice_of_player, scriptGuest);
+            printf("\n%-60c%s\n", emptyChar, scriptLogin);
+            printf("%-60c%-2c%s\n", emptyChar, choice_of_player, scriptGuest);
             printf("%-60c%s\n\n", emptyChar, scriptExit);
         }
         else{
-            printf("\n%-60c%c%s\n", emptyChar, scriptLogin);
+            printf("\n%-60c%s\n", emptyChar, scriptLogin);
             printf("%-60c%s\n", emptyChar, scriptGuest);
-            printf("%-60c%c%s\n\n", emptyChar, choice_of_player, scriptExit);
+            printf("%-60c%-2c%s\n\n", emptyChar, choice_of_player, scriptExit);
         }
+
         display_filler();
+
         shiftingOption = getchar();
-        optionConfirmation = option(&shiftingOption);
-        printf("%d", *option);
+        optionConfirmation = (shiftingOption);
+        accurate_option = optionConfirmation;
+
     }while(optionConfirmation == 0);
     
 
@@ -100,6 +105,18 @@ void display_filler(){
             printf("#");
         }
         printf("\n");
+    }
+}
+
+int option_made(char *letter){
+    if(letter == 'w'){
+        return optionConfirmation++;
+    }
+    else if(letter == 's'){
+        return optionConfirmation--;
+    }
+    else{
+        return 0;
     }
 }
 
