@@ -1,31 +1,26 @@
 #include <stdio.h>
-#include <math.h>
-
-int squared_numbers(int *, int);
+#include <time.h>
+#include <stdlib.h>
 
 int main(){
 
-    int number_arr[6] = {1, 2, 3, 4, 5, 6};
+    srand(time(NULL));
 
-    int *pNumber_arr = NULL;
-    pNumber_arr = &number_arr;
+    int random_number = rand() % 15 + 5;
 
-    int (*arr_squared)(int, int);
-    arr_squared = &squared_numbers;
+    int num[100], min_num[100];
 
-    int length = sizeof(number_arr)/sizeof(number_arr[0]);
+    printf("What is the numbers of integers you wish to input? ");
+    printf("%d", random_number);
 
-    (arr_squared)(pNumber_arr, length);
-
-    for(size_t i = 0; i < length; i++){
-        printf("%5d", number_arr[i]);
-        printf("%p", pNumber_arr[i]);
+    printf("Input numbers: ");
+    for(int i = 0; i < random_number; i++){
+        num[i] = rand() % 20 + 1;
     }
 
-}
-
-int squared_numbers(int number_arr[], int arr_lenth){
-    for(size_t i = 0; i < arr_lenth; i++){
-        number_arr[i] = pow(number_arr[i], 2);
+    for(int i = 0; i < random_number; i++){
+        if(num[i] == num[i+1])
+        min_num[i];
     }
+
 }
