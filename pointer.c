@@ -3,20 +3,22 @@
 
 int main(){
 
-    int num, result = 0;
+    int num;
 
     printf("input any number\nit'll find the perfect number\nin that range starting from 0: ");
     scanf("%d", &num);
 
     printf("These are the perfect number.\n");
 
-    for(int i = 2; i <= num; i++){
-        if(i % i == 0){
-            result += i;
+    for(int i = 1; i <= num; i++){
+        int result = 0;
+        for(int j = 1; j < i/2; j++){
+            if(i % j == 0){
+                result += j;
+            }
         }
-        if(result == num){
-            printf("%d ", result);
-            result = 0;
+        if(result == i){
+            printf("%d\n", i);
         }
     }
 
