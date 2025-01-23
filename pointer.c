@@ -7,27 +7,20 @@ int main(){
 
     srand(time(NULL));
 
-    int num = rand() % 20 + 5, posctr = 0, negctr = 0, zerctr = 0;
+    int num = rand() % 20 + 5, sum = 0;
 
     printf("Enter a number: ");
     printf("%d\n", num);
 
     for(int i = 0; i < num; i++){
-        int random = rand() % 20 - 10;
-        printf("%d\n", random);
-        if(random > 0){
-            posctr++;
-        }
-        else if(random < 0){
-            negctr++;
-        }
-        else{
-            zerctr++;
+        int random = rand() % 20 + 1;
+        if(random % 2 == 0){
+            sum += random;
         }
     }
 
-    printf("Positive numbers: %d\n", posctr);
-    printf("Negative numbers: %d\n", negctr);
-    printf("Zero numbers: %d\n", zerctr);
+    printf("The sum of the even numbers is: %d\n", sum);
+
+    
 
 }
