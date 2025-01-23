@@ -1,20 +1,23 @@
 #include <stdio.h>
-
-int isGreater(int *, int *);
+#include <math.h>
 
 int main(){
 
-    int num1, num2, res;
-    int *pNum1 = NULL, *pNum2 = NULL;
+    int num, result = 0;
 
-    printf("Enter two numbers : ");
-    scanf("%d %d", &num1, &num2);
+    printf("input any number\nit'll find the perfect number\nin that range starting from 0: ");
+    scanf("%d", &num);
 
-    pNum1 = &num1;
-    pNum2 = &num2;
+    printf("These are the perfect number.\n");
 
-    res = (*pNum1 > *pNum2) ? *pNum1 : *pNum2;
+    for(int i = 2; i <= num; i++){
+        if(i % i == 0){
+            result += i;
+        }
+        if(result == num){
+            printf("%d ", result);
+            result = 0;
+        }
+    }
 
-    printf("The greater number is: %d", res);
-    
 }
