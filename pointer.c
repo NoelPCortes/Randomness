@@ -1,25 +1,33 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main(){
 
-    int num;
+    srand(time(NULL));
 
-    printf("input any number\nit'll find the perfect number\nin that range starting from 0: ");
-    scanf("%d", &num);
+    int num = rand() % 20 + 5, posctr = 0, negctr = 0, zerctr = 0;
 
-    printf("These are the perfect number.\n");
+    printf("Enter a number: ");
+    printf("%d\n", num);
 
-    for(int i = 1; i <= num; i++){
-        int result = 0;
-        for(int j = 1; j < i/2; j++){
-            if(i % j == 0){
-                result += j;
-            }
+    for(int i = 0; i < num; i++){
+        int random = rand() % 20 - 10;
+        printf("%d\n", random);
+        if(random > 0){
+            posctr++;
         }
-        if(result == i){
-            printf("%d\n", i);
+        else if(random < 0){
+            negctr++;
+        }
+        else{
+            zerctr++;
         }
     }
+
+    printf("Positive numbers: %d\n", posctr);
+    printf("Negative numbers: %d\n", negctr);
+    printf("Zero numbers: %d\n", zerctr);
 
 }
