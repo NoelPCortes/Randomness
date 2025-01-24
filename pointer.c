@@ -7,22 +7,18 @@ int main(){
 
     srand(time(NULL));
 
-    int num = rand() % 20 + 5, numGreat = 0;
-    int position = 0;
+    int numA = rand() % 20 + 5, numB = rand() % 50 + 5;
 
-    printf("Enter a number: ");
-    printf("%d\n", num);
+    printf("Input the first integer: ");
+    printf("%d\n", numA);
 
-    for(int i = 0; i < num; i++){
-        int random = rand() % 20 + 1;
-        printf("%d\n", random);
-        if(random >= numGreat){
-            numGreat = random;
-            position = i;
+    printf("Input the seconde integer: ");
+    printf("%d\n", numB);
+
+    for(int i = numA; i <= numB; i++){
+        if(i % 7 == 2 || i % 7 == 3){
+            printf("%d\n", i);
         }
     }
-
-    printf("The greatest number is: %d\n", numGreat);
-    printf("The position of the greatest number is: %d\n", position + 1);
 
 }
