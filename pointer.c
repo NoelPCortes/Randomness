@@ -9,16 +9,11 @@ int main(){
 
     int numA = rand() % 20 + 5, numB = rand() % 50 + 5;
 
-    printf("Input the first integer: ");
-    printf("%d\n", numA);
-
-    printf("Input the seconde integer: ");
-    printf("%d\n", numB);
-
-    for(int i = numA; i <= numB; i++){
-        if(i % 7 == 2 || i % 7 == 3){
-            printf("%d\n", i);
+    for(int i = 1; i <= 5; i++){
+        for(int j = 1; j <= 3; j++){
+            printf("%.0lf ", pow(i, j));
         }
+        printf("\n");
     }
 
 }
