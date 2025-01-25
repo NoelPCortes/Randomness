@@ -43,8 +43,7 @@ int main(){
         display_filler();
 
         shiftingOption = getchar();
-        optionConfirmation = (shiftingOption);
-        accurate_option = optionConfirmation;
+        accurate_option = option_made(&shiftingOption);
 
     }while(optionConfirmation == 0);
     
@@ -109,14 +108,14 @@ void display_filler(){
 }
 
 int option_made(char *letter){
-    if(letter == 'w'){
-        return optionConfirmation++;
+    if(*letter == 'w'){
+        return 1;
     }
-    else if(letter == 's'){
-        return optionConfirmation--;
+    else if(*letter == 's'){
+        return 2;
     }
     else{
-        return 0;
+        return 3;
     }
 }
 
