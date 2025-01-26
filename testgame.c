@@ -4,7 +4,9 @@
 #include <stdbool.h>
 #include "Redirect.h"
 
-int  optionConfirmation = false;
+bool optionConfirmation();
+
+char emptyChar = ' ';
 
 int universal_option = 1;
 
@@ -21,8 +23,7 @@ int main(){
     char command[50], username[50], startOptions[50], shiftingOption;
     int validationStatus, userLogin = false, userGuest = false;
 
-    
-
+    //main menu do while loop
     do{
         display_filler();
 
@@ -93,6 +94,7 @@ int main(){
 
 }
 
+//just a filler using '#' to fill the screen
 void display_filler(){
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 152; j++){
@@ -110,7 +112,7 @@ int option_made(char *letter){
     else if(*letter == 'S'){
         universal_option++;
     }
-    else universal_option =  2;
+    else option_confirmation();
 
     if(universal_option > 3){
         universal_option = 1;
@@ -123,28 +125,41 @@ int option_made(char *letter){
         
 }
 
+//shows the option in the main menu
 void main_menu(){
-    char emptyChar = ' ';
     char scriptLogin[] = "Login", scriptGuest[] = "Play as Guest", scriptExit[] = "Exit", choice_of_player = '>';
 
-        switch(universal_option){
-            case 1:
-                printf("\n\n\n%-60c%-2c%s\n", emptyChar, choice_of_player, scriptLogin);
-                printf("%-60c%s\n", emptyChar, scriptGuest);
-                printf("%-60c%s\n\n\n\n", emptyChar, scriptExit);
-                break;
-            case 2:
-                printf("\n\n\n%-60c%s\n", emptyChar, scriptLogin);
-                printf("%-60c%-2c%s\n", emptyChar, choice_of_player, scriptGuest);
-                printf("%-60c%s\n\n\n\n", emptyChar, scriptExit);
-                break;
-            case 3:
-                printf("\n\n\n%-60c%s\n", emptyChar, scriptLogin);
-                printf("%-60c%s\n", emptyChar, scriptGuest);
-                printf("%-60c%-2c%s\n\n\n\n", emptyChar, choice_of_player, scriptExit);
-                break;    
-            default: universal_option = 1; break;
-        }
+    switch(universal_option){
+        case 1:
+            printf("\n\n\n%-60c%-2c%s\n", emptyChar, choice_of_player, scriptLogin);
+            printf("%-60c%s\n", emptyChar, scriptGuest);
+            printf("%-60c%s\n\n\n\n", emptyChar, scriptExit);
+            break;
+        case 2:
+            printf("\n\n\n%-60c%s\n", emptyChar, scriptLogin);
+            printf("%-60c%-2c%s\n", emptyChar, choice_of_player, scriptGuest);
+            printf("%-60c%s\n\n\n\n", emptyChar, scriptExit);
+            break;
+        case 3:
+            printf("\n\n\n%-60c%s\n", emptyChar, scriptLogin);
+            printf("%-60c%s\n", emptyChar, scriptGuest);
+            printf("%-60c%-2c%s\n\n\n\n", emptyChar, choice_of_player, scriptExit);
+            break;    
+        default: universal_option = 1; break;
+    }
+}
+
+
+//fix the confirmation main menu
+void option_confirmation(){
+    char option_choice;
+    printf("\n\n\n\n%-60c%s\n\n\n\n\n", emptyChar, "Confirm?");
+    option_choice = getchar();
+    if(option_choice == '\n'){
+        option_choice = getchar();
+        return true;
+    }
+    else return false;
 }
 
 /*int VerificationUsernameIFValid(char *username){
