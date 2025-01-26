@@ -14,47 +14,32 @@ int VerificationUsernameIFValid(char *);
 
 int option_made(char *);
 
+void main_menu();
+
 int main(){
 
     char command[50], username[50], startOptions[50], shiftingOption;
-    char emptyChar = ' ';
     int validationStatus, userLogin = false, userGuest = false;
 
-    //display_filler();
+    
 
     do{
-        char scriptLogin[] = "Login", scriptGuest[] = "Play as Guest", scriptExit[] = "Exit", choice_of_player = '>';
+        display_filler();
 
-        switch(universal_option){
-            case 1:
-                printf("\n\n\n%-60c%-2c%s\n", emptyChar, choice_of_player, scriptLogin);
-                printf("%-60c%s\n", emptyChar, scriptGuest);
-                printf("%-60c%s\n\n\n\n", emptyChar, scriptExit);
-                break;
-            case 2:
-                printf("\n\n\n%-60c%s\n", emptyChar, scriptLogin);
-                printf("%-60c%-2c%s\n", emptyChar, choice_of_player, scriptGuest);
-                printf("%-60c%s\n\n\n\n", emptyChar, scriptExit);
-                break;
-            case 3:
-                printf("\n\n\n%-60c%s\n", emptyChar, scriptLogin);
-                printf("%-60c%s\n", emptyChar, scriptGuest);
-                printf("%-60c%-2c%s\n\n\n\n", emptyChar, choice_of_player, scriptExit);
-                break;    
-            default: universal_option = 1; break;
-        }
+        main_menu();
+        
 
-        //display_filler();
+        display_filler();
 
         shiftingOption = getchar();
 
         if(shiftingOption == '\n'){
             shiftingOption = getchar();
+            printf("Confirm: \n");
         }
 
         option_made(&shiftingOption);
 
-        printf("%d", universal_option);
     }while(optionConfirmation == false);
     
 
@@ -108,14 +93,14 @@ int main(){
 
 }
 
-/*void display_filler(){
+void display_filler(){
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 152; j++){
             printf("#");
         }
         printf("\n");
     }
-}*/
+}
 
 int option_made(char *letter){
     *letter = toupper(*letter);
@@ -125,7 +110,7 @@ int option_made(char *letter){
     else if(*letter == 'S'){
         universal_option++;
     }
-    else return 0;
+    else universal_option =  2;
 
     if(universal_option > 3){
         universal_option = 1;
@@ -136,6 +121,30 @@ int option_made(char *letter){
 
     return universal_option;
         
+}
+
+void main_menu(){
+    char emptyChar = ' ';
+    char scriptLogin[] = "Login", scriptGuest[] = "Play as Guest", scriptExit[] = "Exit", choice_of_player = '>';
+
+        switch(universal_option){
+            case 1:
+                printf("\n\n\n%-60c%-2c%s\n", emptyChar, choice_of_player, scriptLogin);
+                printf("%-60c%s\n", emptyChar, scriptGuest);
+                printf("%-60c%s\n\n\n\n", emptyChar, scriptExit);
+                break;
+            case 2:
+                printf("\n\n\n%-60c%s\n", emptyChar, scriptLogin);
+                printf("%-60c%-2c%s\n", emptyChar, choice_of_player, scriptGuest);
+                printf("%-60c%s\n\n\n\n", emptyChar, scriptExit);
+                break;
+            case 3:
+                printf("\n\n\n%-60c%s\n", emptyChar, scriptLogin);
+                printf("%-60c%s\n", emptyChar, scriptGuest);
+                printf("%-60c%-2c%s\n\n\n\n", emptyChar, choice_of_player, scriptExit);
+                break;    
+            default: universal_option = 1; break;
+        }
 }
 
 /*int VerificationUsernameIFValid(char *username){
