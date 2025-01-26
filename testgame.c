@@ -162,6 +162,7 @@ void option_confirmation(){
     else return false;
 }
 
+//Username validation
 /*int VerificationUsernameIFValid(char *username){
 
     int len = strlen(username);
