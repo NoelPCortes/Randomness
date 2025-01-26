@@ -23,10 +23,9 @@ int main(){
     //display_filler();
 
     do{
-        int accurate_option = 1;
         char scriptLogin[] = "Login", scriptGuest[] = "Play as Guest", scriptExit[] = "Exit", choice_of_player = '>';
 
-        switch(accurate_option){
+        switch(universal_option){
             case 1:
                 printf("\n\n\n%-60c%-2c%s\n", emptyChar, choice_of_player, scriptLogin);
                 printf("%-60c%s\n", emptyChar, scriptGuest);
@@ -42,7 +41,7 @@ int main(){
                 printf("%-60c%s\n", emptyChar, scriptGuest);
                 printf("%-60c%-2c%s\n\n\n\n", emptyChar, choice_of_player, scriptExit);
                 break;    
-            default: accurate_option = 1; break;
+            default: universal_option = 1; break;
         }
 
         //display_filler();
@@ -53,9 +52,9 @@ int main(){
             shiftingOption = getchar();
         }
 
-        accurate_option = option_made(&shiftingOption);
+        option_made(&shiftingOption);
 
-        printf("%d", accurate_option);
+        printf("%d", universal_option);
     }while(optionConfirmation == false);
     
 
