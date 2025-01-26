@@ -4,7 +4,9 @@
 #include <stdbool.h>
 #include "Redirect.h"
 
-int  optionConfirmation = 0;
+int  optionConfirmation = false;
+
+int universal_option = 1;
 
 void display_filler();
 
@@ -18,37 +20,46 @@ int main(){
     char emptyChar = ' ';
     int validationStatus, userLogin = false, userGuest = false;
 
-    display_filler();
+    //display_filler();
 
     do{
-        float accurate_option = 1;
+        int accurate_option = 1;
         char scriptLogin[] = "Login", scriptGuest[] = "Play as Guest", scriptExit[] = "Exit", choice_of_player = '>';
 
-        if(accurate_option == 1){
-            printf("\n%-60c%-2c%s\n", emptyChar, choice_of_player, scriptLogin);
-            printf("%-60c%s\n", emptyChar, scriptGuest);
-            printf("%-60c%s\n\n", emptyChar, scriptExit);
-        }
-        else if(accurate_option == 2){
-            printf("\n%-60c%s\n", emptyChar, scriptLogin);
-            printf("%-60c%-2c%s\n", emptyChar, choice_of_player, scriptGuest);
-            printf("%-60c%s\n\n", emptyChar, scriptExit);
-        }
-        else{
-            printf("\n%-60c%s\n", emptyChar, scriptLogin);
-            printf("%-60c%s\n", emptyChar, scriptGuest);
-            printf("%-60c%-2c%s\n\n", emptyChar, choice_of_player, scriptExit);
+        switch(accurate_option){
+            case 1:
+                printf("\n\n\n%-60c%-2c%s\n", emptyChar, choice_of_player, scriptLogin);
+                printf("%-60c%s\n", emptyChar, scriptGuest);
+                printf("%-60c%s\n\n\n\n", emptyChar, scriptExit);
+                break;
+            case 2:
+                printf("\n\n\n%-60c%s\n", emptyChar, scriptLogin);
+                printf("%-60c%-2c%s\n", emptyChar, choice_of_player, scriptGuest);
+                printf("%-60c%s\n\n\n\n", emptyChar, scriptExit);
+                break;
+            case 3:
+                printf("\n\n\n%-60c%s\n", emptyChar, scriptLogin);
+                printf("%-60c%s\n", emptyChar, scriptGuest);
+                printf("%-60c%-2c%s\n\n\n\n", emptyChar, choice_of_player, scriptExit);
+                break;    
+            default: accurate_option = 1; break;
         }
 
-        display_filler();
+        //display_filler();
 
         shiftingOption = getchar();
+
+        if(shiftingOption == '\n'){
+            shiftingOption = getchar();
+        }
+
         accurate_option = option_made(&shiftingOption);
 
-    }while(optionConfirmation == 0);
+        printf("%d", accurate_option);
+    }while(optionConfirmation == false);
     
 
-    if(userLogin == true){
+    /*if(userLogin == true){
         do{
         printf("Enter username: ");
         fgets(username, sizeof(username), stdin);
@@ -94,32 +105,41 @@ int main(){
         else{
             printf("Invalid choice");
         }
-    };
+    }*/
 
 }
 
-void display_filler(){
+/*void display_filler(){
     for(int i = 0; i < 3; i++){
-        for(int j = 0; j < 150; j++){
+        for(int j = 0; j < 152; j++){
             printf("#");
         }
         printf("\n");
     }
-}
+}*/
 
 int option_made(char *letter){
-    if(*letter == 'w'){
-        return 1;
+    *letter = toupper(*letter);
+    if(*letter == 'W'){
+        universal_option--;
     }
-    else if(*letter == 's'){
-        return 2;
+    else if(*letter == 'S'){
+        universal_option++;
     }
-    else{
-        return 3;
+    else return 0;
+
+    if(universal_option > 3){
+        universal_option = 1;
     }
+    else if(universal_option < 1){
+        universal_option = 3;
+    }
+
+    return universal_option;
+        
 }
 
-int VerificationUsernameIFValid(char *username){
+/*int VerificationUsernameIFValid(char *username){
 
     int len = strlen(username);
 
@@ -137,4 +157,4 @@ int VerificationUsernameIFValid(char *username){
     }
 
     return 1;
-}
+}*/
