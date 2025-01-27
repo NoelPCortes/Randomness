@@ -18,6 +18,8 @@ int option_made(char *);
 
 void main_menu();
 
+void option_Confirmation(char *);
+
 int main(){
 
     char command[50], username[50], startOptions[50], shiftingOption;
@@ -38,7 +40,7 @@ int main(){
             printf("Confirm: \n");
         }
 
-        option_made(&shiftingOption);
+        main_menu(&shiftingOption);
 
     }while(optionConfirmation == false);
     
@@ -150,7 +152,7 @@ void main_menu(){
 
 
 //fix the confirmation main menu
-void option_Confirmation(){
+void option_Confirmation(char *option_ch){
     char option_choice;
     printf("\n\n\n\n%-60c%s\n\n\n\n\n", emptyChar, "Confirm?");
     option_choice = getchar();
