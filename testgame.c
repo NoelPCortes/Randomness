@@ -18,7 +18,7 @@ int option_made(char *);
 
 void main_menu();
 
-void option_Confirmation(char *);
+void option_Confirmation();
 
 int main(){
 
@@ -40,7 +40,7 @@ int main(){
             printf("Confirm: \n");
         }
 
-        main_menu(&shiftingOption);
+        option_made(&shiftingOption);
 
     }while(optionConfirmation == false);
     
@@ -152,15 +152,15 @@ void main_menu(){
 
 
 //fix the confirmation main menu
-void option_Confirmation(char *option_ch){
+void option_Confirmation(){
     char option_choice;
     printf("\n\n\n\n%-60c%s\n\n\n\n\n", emptyChar, "Confirm?");
     option_choice = getchar();
     if(option_choice == '\n'){
         option_choice = getchar();
-        return true;
+        optionConfirmation = true;
     }
-    else return false;
+    optionConfirmation = false;
 }
 
 //Username validation
