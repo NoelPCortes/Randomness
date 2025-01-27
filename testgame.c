@@ -28,7 +28,6 @@ int main(){
         display_filler();
 
         main_menu();
-        
 
         display_filler();
 
