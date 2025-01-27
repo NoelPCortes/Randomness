@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include "Redirect.h"
 
-bool optionConfirmation();
+bool optionConfirmation = false;
 
 char emptyChar = ' ';
 
@@ -150,7 +150,7 @@ void main_menu(){
 
 
 //fix the confirmation main menu
-void option_confirmation(){
+void option_Confirmation(){
     char option_choice;
     printf("\n\n\n\n%-60c%s\n\n\n\n\n", emptyChar, "Confirm?");
     option_choice = getchar();
