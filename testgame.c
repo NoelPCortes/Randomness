@@ -158,7 +158,7 @@ void main_menu(){
 }
 
 
-//fix the confirmation main menu
+//fix the confirmation main menu a lot of errors here
 void option_Confirmation(char **chLetter){
     int final_decision_option = 1;
 
