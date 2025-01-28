@@ -8,6 +8,8 @@ bool optionConfirmation = false;
 
 char emptyChar = ' ';
 
+int universal_confirm_option = 1;
+
 int universal_option = 1;
 
 void display_filler_top();
@@ -123,6 +125,9 @@ int option_made(char *letter){
     else if(universal_option < 1){
         universal_option = 3;
     }
+    else{
+        universal_option = universal_option;
+    }
 
     return universal_option;
         
@@ -155,16 +160,45 @@ void main_menu(){
 
 //fix the confirmation main menu
 void option_Confirmation(char **chLetter){
-    char option_choice;
+    int final_decision_option = 1;
+
+
     display_filler_top();
+
     printf("\n\n\n\n%-60c%s\n", emptyChar, "Confirm?");
-    printf("%-60c%-6s%s\n\n\n\n\n", emptyChar, "Yes", "No");
-    display_filler_bottom();
-    option_choice = getchar();
-    if(option_choice == '\n'){
-        option_choice = getchar();
+    switch (universal_confirm_option)
+    {
+    case 1:
+        printf("%-60c%c%s", emptyChar, ' ', "Yes");
+        break;
+    case 2:
+        printf("%-60c%c%s", emptyChar, ' ', "No");
+        break;
+    default: break;
     }
 
+    display_filler_bottom();
+
+    if(**chLetter == 'a'){
+        universal_confirm_option++;
+    }
+    else if(**chLetter == 'd'){
+        universal_confirm_option--;
+    }
+    else{
+        universal_confirm_option = universal_confirm_option;
+    }
+
+    if(universal_confirm_option > 2){
+        universal_confirm_option = 1;
+    }
+    else if(universal_confirm_option < 1){
+        universal_confirm_option = 2;
+    }
+    else{
+        universal_confirm_option = universal_confirm_option;
+    }
+    
 }
 
 //Username validation
