@@ -10,7 +10,8 @@ char emptyChar = ' ';
 
 int universal_option = 1;
 
-void display_filler();
+void display_filler_top();
+void display_filler_bottom();
 
 int VerificationUsernameIFValid(char *);
 
@@ -27,11 +28,11 @@ int main(){
 
     //main menu do while loop
     do{
-        display_filler();
+        display_filler_top();
 
         main_menu();
 
-        display_filler();
+        display_filler_bottom();
 
         shiftingOption = getchar();
 
@@ -96,13 +97,12 @@ int main(){
 
 //just a filler using '#' to fill the screen
 //change it into a newline instead of # for lesser bugs
-void display_filler(){
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < 152; j++){
-            printf("#");
-        }
-        printf("\n");
-    }
+void display_filler_top(){
+    printf("\n\n\n\n\n\n");
+}
+
+void display_filler_bottom(){
+    printf("\n\n\n\n\n\n");
 }
 
 int option_made(char *letter){
@@ -134,19 +134,19 @@ void main_menu(){
 
     switch(universal_option){
         case 1:
-            printf("\n\n\n%-60c%-2c%s\n", emptyChar, choice_of_player, scriptLogin);
+            printf("%-60c%-2c%s\n", emptyChar, choice_of_player, scriptLogin);
             printf("%-60c%s\n", emptyChar, scriptGuest);
-            printf("%-60c%s\n\n\n\n", emptyChar, scriptExit);
+            printf("%-60c%s", emptyChar, scriptExit);
             break;
         case 2:
-            printf("\n\n\n%-60c%s\n", emptyChar, scriptLogin);
+            printf("%-60c%s\n", emptyChar, scriptLogin);
             printf("%-60c%-2c%s\n", emptyChar, choice_of_player, scriptGuest);
-            printf("%-60c%s\n\n\n\n", emptyChar, scriptExit);
+            printf("%-60c%s", emptyChar, scriptExit);
             break;
         case 3:
-            printf("\n\n\n%-60c%s\n", emptyChar, scriptLogin);
+            printf("%-60c%s\n", emptyChar, scriptLogin);
             printf("%-60c%s\n", emptyChar, scriptGuest);
-            printf("%-60c%-2c%s\n\n\n\n", emptyChar, choice_of_player, scriptExit);
+            printf("%-60c%-2c%s", emptyChar, choice_of_player, scriptExit);
             break;    
         default: universal_option = 1; break;
     }
@@ -156,8 +156,10 @@ void main_menu(){
 //fix the confirmation main menu
 void option_Confirmation(char **chLetter){
     char option_choice;
+    display_filler_top();
     printf("\n\n\n\n%-60c%s\n", emptyChar, "Confirm?");
     printf("%-60c%-6s%s\n\n\n\n\n", emptyChar, "Yes", "No");
+    display_filler_bottom();
     option_choice = getchar();
     if(option_choice == '\n'){
         option_choice = getchar();
