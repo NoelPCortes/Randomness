@@ -37,7 +37,6 @@ int main(){
 
         if(shiftingOption == '\n'){
             shiftingOption = getchar();
-            printf("Confirm: \n");
         }
 
         option_made(&shiftingOption);
@@ -96,6 +95,7 @@ int main(){
 }
 
 //just a filler using '#' to fill the screen
+//change it into a newline instead of # for lesser bugs
 void display_filler(){
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 152; j++){
@@ -114,7 +114,7 @@ int option_made(char *letter){
         universal_option++;
     }
     else{
-        option_confirmation(&letter);
+        option_Confirmation(&letter);
     }
 
     if(universal_option > 3){
@@ -167,7 +167,6 @@ void option_Confirmation(char *chLetter){
 /*int VerificationUsernameIFValid(char *username){
 
     int len = strlen(username);
-
 
     if(len < 3 || len >= 20){
         printf("\nUsername should atleast be 3 characters and not exceeding 20.\n\n");
