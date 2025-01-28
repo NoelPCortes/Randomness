@@ -18,7 +18,7 @@ int option_made(char *);
 
 void main_menu();
 
-void option_Confirmation();
+void option_Confirmation(char *);
 
 int main(){
 
@@ -113,7 +113,9 @@ int option_made(char *letter){
     else if(*letter == 'S'){
         universal_option++;
     }
-    else option_confirmation();
+    else{
+        option_confirmation(&letter);
+    }
 
     if(universal_option > 3){
         universal_option = 1;
@@ -121,8 +123,6 @@ int option_made(char *letter){
     else if(universal_option < 1){
         universal_option = 3;
     }
-
-    return universal_option;
         
 }
 
@@ -152,7 +152,7 @@ void main_menu(){
 
 
 //fix the confirmation main menu
-void option_Confirmation(){
+void option_Confirmation(char *chLetter){
     char option_choice;
     printf("\n\n\n\n%-60c%s\n\n\n\n\n", emptyChar, "Confirm?");
     option_choice = getchar();
