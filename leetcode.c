@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <string.h>
 
 char * mergeAlternately(char * word1, char * word2);
 
 int main(){
 
-    char word1[50], word2[50];
+    char word1[10], word2[10];
 
     printf("Enter first word: ");
     fgets(word1, sizeof(word1), stdin);
@@ -12,24 +13,37 @@ int main(){
     printf("Enter second word: ");
     fgets(word2, sizeof(word2), stdin);
 
-    char output[sizeof(word1) + sizeof(word2)];
+    const int numLength = strlen(word1) + strlen(word2);
 
-    output[sizeof(word1) + sizeof(word2)] = mergeAlternately(word1, word2);
+    char * output[numLength];
+
+    output[numLength] = mergeAlternately(word1, word2);
+
+    printf("%s", *output);
 
 }
 
 char * mergeAlternately(char * word1, char * word2){
     const int length = sizeof(word1) + sizeof(word2);
-    char * output[length];
-    for(int i = 1; i < length + 1; i++){
-        if(i % 2 != 0){
-            output[i] = word1[i];
-        }
-        else{
-            output[i] = word2[i];
-        }
+    const int word1_length = sizeof(word1);
+    const int word2_length = sizeof(word2);
+    char output[length + 1];
+    
+    int i = 0, j = 0, k = 0;
+
+    while(i < word1_length && j < word2_length){
+        output[k++] = word1[i++];
+        output[k++] = word2[j++];
     }
     
-    return *output;
+    while(i < word1_length){
+        output[k++] = word1[i++];
+    }
+    
+    while(j < word2_length){
+        output[k++] = word2[j++];
+    }
+    
+    output[k] = '\0';
     
 }
