@@ -171,7 +171,7 @@ void option_Confirmation(){
         switch (universal_confirm_option)
         {
         case 1:
-            printf("%-59c%-2s%-2c", emptyChar, "Yes", '<');
+            printf("%-60c%-4s%c", emptyChar, "Yes", '<');
             printf("%-2c%s", emptyChar, "No");
             break;
         case 2:
