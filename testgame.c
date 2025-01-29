@@ -21,7 +21,7 @@ int option_made(char *);
 
 void main_menu();
 
-void option_Confirmation(char **);
+void option_Confirmation();
 
 int main(){
 
@@ -116,7 +116,7 @@ int option_made(char *letter){
         universal_option++;
     }
     else{
-        option_Confirmation(&letter);
+        option_Confirmation();
     }
 
     if(universal_option > 3){
@@ -159,44 +159,56 @@ void main_menu(){
 
 
 //fix the confirmation main menu a lot of errors here
-void option_Confirmation(char **chLetter){
+void option_Confirmation(){
     int final_decision_option = 1;
+    bool chLetter_bool = false;
+    char chLetter;
 
+    while(chLetter_bool == false){
+        display_filler_top();
 
-    display_filler_top();
+        printf("\n\n\n\n%-60c%s\n", emptyChar, "Confirm?");
+        switch (universal_confirm_option)
+        {
+        case 1:
+            printf("%-59c%-2s%-2c", emptyChar, "Yes", '<');
+            printf("%-2c%s", emptyChar, "No");
+            break;
+        case 2:
+            printf("%-60c%s", emptyChar, "Yes");
+            printf("%-2c%-2c%s", emptyChar, '>', "No");
+            break;
+        default: break;
+        }
 
-    printf("\n\n\n\n%-60c%s\n", emptyChar, "Confirm?");
-    switch (universal_confirm_option)
-    {
-    case 1:
-        printf("%-60c%c%s", emptyChar, ' ', "Yes");
-        break;
-    case 2:
-        printf("%-60c%c%s", emptyChar, ' ', "No");
-        break;
-    default: break;
-    }
+        display_filler_bottom();
 
-    display_filler_bottom();
+        chLetter = getchar();
+        if(chLetter == '\n'){
+            chLetter = getchar();
+        }
 
-    if(**chLetter == 'a'){
-        universal_confirm_option++;
-    }
-    else if(**chLetter == 'd'){
-        universal_confirm_option--;
-    }
-    else{
-        universal_confirm_option = universal_confirm_option;
-    }
+        chLetter = tolower(chLetter);
 
-    if(universal_confirm_option > 2){
-        universal_confirm_option = 1;
-    }
-    else if(universal_confirm_option < 1){
-        universal_confirm_option = 2;
-    }
-    else{
-        universal_confirm_option = universal_confirm_option;
+        if(chLetter == 'a'){
+            universal_confirm_option++;
+        }
+        else if(chLetter == 'd'){
+            universal_confirm_option--;
+        }
+        else{
+            universal_confirm_option = universal_confirm_option;
+        }
+
+        if(universal_confirm_option > 2){
+            universal_confirm_option = 1;
+        }
+        else if(universal_confirm_option < 1){
+            universal_confirm_option = 2;
+        }
+        else{
+            universal_confirm_option = universal_confirm_option;
+        }
     }
     
 }
