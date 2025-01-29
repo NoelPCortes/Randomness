@@ -1,37 +1,42 @@
 #include <stdio.h>
 
-void moveZeroes(int* nums, int numsSize);
+int singleNumber(int* nums, int numsSize);
 
 int main(){
 
-    int num, numArr[100];
+    int nums[10], numsSize;
 
-    printf("How many numbers do you want to input? ");
-    scanf("%d", &num);
+    printf("Enter size of array: ");
+    scanf("%d", &numsSize);
 
-    for(int i = 0; i < num; i++){
-        printf("Enter number: ");
-        scanf("%d", &numArr[i]);
+    for(int i = 0; i < numsSize; i++){
+        printf("Element %d - ", i + 1);
+        scanf("%d", &nums[i]);
     }
 
-    moveZeroes(numArr, num);
+    int singleNum = 0;
+    
+    singleNum = singleNumber(nums, numsSize);
+
+    printf("%d", singleNum);
 
 }
 
-void moveZeroes(int* nums, int numsSize) {
-    int lastNonZeroFoundAt = 0;
+int singleNumber(int* nums, int numsSize) {
+    int min_num[numsSize];
     for(int i = 0; i < numsSize; i++){
-        if(nums[i] != 0) {
-            // Swap the current element with the element at lastNonZeroFoundAt
-            if(i != lastNonZeroFoundAt) {
-                int temp = nums[i];
-                nums[i] = nums[lastNonZeroFoundAt];
-                nums[lastNonZeroFoundAt] = temp;
-            }
-            lastNonZeroFoundAt++;
-        }
+        min_num[i] = 1;
     }
     for(int i = 0; i < numsSize; i++){
-        printf("%d\n", nums[i]);
+        for(int j = 0; j < numsSize; j++){
+            if(nums[i] == nums[j + i]){
+                min_num[i]++;
+            }
+        }
+    }
+    for(int i = 0; i <= numsSize; i++){
+        if(min_num[i] < min_num[i + 1]){
+            return nums[i];
+        }
     }
 }
