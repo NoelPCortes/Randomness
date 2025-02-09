@@ -1,31 +1,20 @@
-#include <string.h>
 #include <stdio.h>
 
 int main(){
     
-    int i = 0, length, palindromeCheck;
-    char strArg[50];
+    int numArgA, numArgB, i = 1, numRes = 1;
     
-    printf("Enter a string: ");
-    fgets(strArg, sizeof(strArg), stdin);
-    strArg[strlen(strArg)-1] = '\0';
+    printf("Enter x: ");
+    scanf("%d", &numArgA);
     
-    length = strlen(strArg);
+    printf("Enter n: ");
+    scanf("%d", &numArgB);
     
-    while(length > 0) {
-        if(strArg[i] == strArg[length - 1]){
-            palindromeCheck = 1;
-        } else {
-            palindromeCheck = 0;
-        }
+    while(i <= numArgB){
+        numRes *= numArgA;
         i++;
-        length--;
     }
     
-    if(palindromeCheck == 1) {
-        printf("Yes");
-    } else {
-        printf("No");
-    }
+    printf("%d^%d = %d", numArgA, numArgB, numRes);
     
 }
