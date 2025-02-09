@@ -1,19 +1,19 @@
 #include <stdio.h>
-#include <string.h>
 
 int main(){
     
-    char stringArg[50];
+    int num, res = 0;
     
-    printf("Enter a string: ");
-    fgets(stringArg, sizeof(stringArg), stdin);
-    stringArg[strlen(stringArg)-1] = '\0';
+    printf("Enter a number: ");
+    scanf("%d", &num);
     
-    int strLength = strlen(stringArg);
-
-    while(strLength >= 0){
-        printf("%c", stringArg[strLength]);
-        strLength--;
+    printf("Reversed number: ");
+    
+    while(num > 0){
+        res = (res * 10) + num % 10;
+        num /= 10;
     }
+    
+    printf("%d", res);
     
 }
