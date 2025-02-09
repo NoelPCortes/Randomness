@@ -1,19 +1,31 @@
+#include <string.h>
 #include <stdio.h>
 
 int main(){
     
-    int num, res = 0;
+    int i = 0, length, palindromeCheck;
+    char strArg[50];
     
-    printf("Enter a number: ");
-    scanf("%d", &num);
+    printf("Enter a string: ");
+    fgets(strArg, sizeof(strArg), stdin);
+    strArg[strlen(strArg)-1] = '\0';
     
-    printf("Reversed number: ");
+    length = strlen(strArg);
     
-    while(num > 0){
-        res = (res * 10) + num % 10;
-        num /= 10;
+    while(length > 0) {
+        if(strArg[i] == strArg[length - 1]){
+            palindromeCheck = 1;
+        } else {
+            palindromeCheck = 0;
+        }
+        i++;
+        length--;
     }
     
-    printf("%d", res);
+    if(palindromeCheck == 1) {
+        printf("Yes");
+    } else {
+        printf("No");
+    }
     
 }
