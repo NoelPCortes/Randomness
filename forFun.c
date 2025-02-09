@@ -1,25 +1,35 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
+#include <stdbool.h>
 
-int main(){
-    
-    char strArg[50];
-    
-    printf("Enter a string: ");
-    fgets(strArg, sizeof(strArg), stdin);
-    strArg[strlen(strArg)-1] = '\0';
-    
-    const int length = strlen(strArg); 
-    int i = 0, vowelCtr = 0;
-    
-    while(i < length){
-        if(tolower(strArg[i]) == 'a' || tolower(strArg[i]) == 'e' || tolower(strArg[i]) == 'i' || tolower(strArg[i]) == 'o' || tolower(strArg[i]) == 'u' ){
-            vowelCtr++;
-        }
-        i++;
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    int d;
+    scanf("%d", &d);
+    int h;
+    scanf("%d", &h);
+
+    // Write an answer using printf(). DON'T FORGET THE TRAILING \n
+    // To debug: fprintf(stderr, "Debug messages...\n");
+
+    int resD = d * 24;
+    int aliveRes = n * h;
+
+    if(aliveRes < resD) {
+        printf("Not enough\n");
+    } else if (aliveRes == resD) {
+        printf("Just enough\n");
+    } else {
+        printf("It is enough\n");
     }
  
-    printf("The number of vowels in the string is: %d\n", vowelCtr);
-    
+    return 0;
 }
