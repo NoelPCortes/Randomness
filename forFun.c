@@ -1,19 +1,19 @@
 #include <stdio.h>
-#include <math.h>
 
 int main(){
     
-    int numArgA, resNum = 0, i = 0;
+    int numArgA, resNum, i = 0;
     
-    printf("Enter a binary number: ");
+    printf("Enter a positive integer: ");
     scanf("%d", &numArgA);
     
     do{
-        int remNum = numArgA % 10;
-        resNum += remNum * pow(2, i++);
-        numArgA /= 10;
-    }while(numArgA > 0);
+        if(i % 3 == 0 || i % 5 == 0){
+            resNum += i;
+        }
+        i++;
+    }while(i < numArgA);
     
-    printf("Decimal equivalent: %d\n", resNum);
+    printf("The sum of all multiples of 3 or 5 below %d is %d.", numArgA,resNum);
     
 }
