@@ -1,30 +1,19 @@
-#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-#include <stdbool.h>
+#include <math.h>
 
-/**
- * Auto-generated code below aims at helping you parse
- * the standard input according to the problem statement.
- **/
-
-int main()
-{
-    int num;
-    scanf("%d", &num);
-
-    for(int i = num; i >= 1; i--){
-        for(int j = 1; j <= i; j++){
-            printf("*");
-        }
-        printf("\n");
-    }
-    for(int i = 1; i <= num; i++){
-        for(int j = 1; j <= i; j++){
-            printf("*");
-        }
-        printf("\n");
-    }
-
-    return 0;
+int main(){
+    
+    int numArgA, resNum = 0, i = 0;
+    
+    printf("Enter a binary number: ");
+    scanf("%d", &numArgA);
+    
+    do{
+        int remNum = numArgA % 10;
+        resNum += remNum * pow(2, i++);
+        numArgA /= 10;
+    }while(numArgA > 0);
+    
+    printf("Decimal equivalent: %d\n", resNum);
+    
 }
