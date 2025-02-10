@@ -1,29 +1,30 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
+#include <stdbool.h>
 
-int main(){
-    
-    int num, i = 0, temp = 0;
-    
-    printf("Enter a decimal number: ");
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+
+int main()
+{
+    int num;
     scanf("%d", &num);
-    
-    char strArg[25];
-    strArg[0] = '0';
-    
-    while(num > 0){
-        strArg[i] = (num % 2 == 0) ? '0' : '1';
-        num/=2;
-        i++;
+
+    for(int i = num; i >= 1; i--){
+        for(int j = 1; j <= i; j++){
+            printf("*");
+        }
+        printf("\n");
     }
-    
-    int length = strlen(strArg);
-    
-    printf("Binary equivalent: ");
-    
-    while(length >= 0){
-        printf("%c", strArg[length--]);
+    for(int i = 1; i <= num; i++){
+        for(int j = 1; j <= i; j++){
+            printf("*");
+        }
+        printf("\n");
     }
-    
+
+    return 0;
 }
