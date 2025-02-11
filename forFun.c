@@ -1,30 +1,43 @@
 #include <stdio.h>
 
+/*1000
+-500
+0
+
+Transaction: Deposit
+Amount entered: Php 1000.00
+Current Balance: Php 1000.00
+
+Transaction: Issuance
+Amount entered: Php 500.00
+Current Balance: Php 500.00
+End of transactions.*/
+
 int main(){
     
-    int numArgA, primeCheck = 0;
+    double amount_entered, remaining_balance = 0;
     
-    scanf("%d", &numArgA);
     
-    if(numArgA > 0) {
-        int i, j;
-        for(i = 2; i < numArgA; i++){
-            for(j = 2; j <= 10;j++){
-                if(i * j == numArgA){
-                    primeCheck = 1;
-                    break;
-                }
-            }
+    
+    do{
+        scanf("%lf", &amount_entered);
+        remaining_balance += amount_entered;
+        if(remaining_balance < 0) {
+            printf("Warning: Issuance amount exceeds balance. Transaction declined.\n");
+            remaining_balance -= amount_entered;
+        } else if(amount_entered > 0) {
+            printf("Transaction: Deposit\n");
+            printf("Amount entered: Php %.2lf\n", amount_entered);
+            printf("Current Balance: Php %.2lf\n", remaining_balance);
+        } else if(amount_entered < 0) {
+            printf("Transaction: Deposit\n");
+            printf("Amount entered: Php %.2lf\n", amount_entered);
+            printf("Current Balance: Php %.2lf\n", remaining_balance);
+        } else {
+            break;
         }
-    } else {
-        printf("Invalid input!");
-        return 0;
-    }
+    }while(amount_entered != 0);
     
-    if(primeCheck == 0) {
-        printf("Prime!");
-    } else {
-        printf("Not Prime!");
-    }
+    printf("End of transactions.\n");
     
 }
