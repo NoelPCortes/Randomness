@@ -4,15 +4,9 @@ int main(){
     
     int i, j;
     
-    for(i = 0; i < 6; i++){
-        for(j = 0; j < 6; j++){
-            if(i == j) {
-                printf("%2d ", 0);
-            } else if(j > i) {
-                printf("%2d ", -1);
-            } else {
-                printf("%2d ", 1);
-            }
+    for(i = 1; i <= 10; i++){
+        for(j = 1; j <= 10; j++){
+            printf("%3d", i * j);
         }
         printf("\n");
     }
