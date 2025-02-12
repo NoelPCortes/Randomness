@@ -1,21 +1,33 @@
 #include <stdio.h>
 
-/*In order to discourage excess electric consumption, an electrical company charges its customers a lower rate of P75 for the first 250 kilowatt-hours and a higher rate of P8.5 for each additional kilowatt-hour. In addition, a 10% surtax is added to the final bill. Write a program that calculates the electrical bill given the number of kilowatt-hours consumed as input. At the end, print the number of kilowatt-hours consumed and the computed bill.*/
+/*     if total sales is                  Commission is
+above 0 but below 10,000                 2% of total sales
+at least 10,000 but below 25,000       5% of total sales
+at least 25,000 but below 50,000      10% of total sales
+at least 50,000 but below 75,000      13% of total sales
+at least 75,000 but below 100,000    15% of total sales       
+   at least 100,000                                25% of total sales       */
 
 int main(){
     
-    int watt_hrs;
-    double total_bill = 75;
+    double sales, com_sales;
     
-    scanf("%d", &watt_hrs);
+    scanf("%lf", &sales);
     
-    if(watt_hrs > 250){
-        total_bill += (watt_hrs - 250) * 8.5;
+    if(sales < 10000) {
+        com_sales = sales * 0.02;
+    } else if(sales < 25000) {
+        com_sales = sales * 0.05;
+    } else if(sales < 50000) {
+        com_sales = sales * 0.1;
+    } else if(sales < 75000) {
+        com_sales = sales * 0.13;
+    } else if(sales < 100000) {
+        com_sales = sales * 0.15;
+    } else {
+        com_sales = sales * 0.25;
     }
     
-    total_bill += (total_bill*0.1);
-    
-    printf("Kilowatt-hours: %d\n", watt_hrs);
-    printf("Electric bill: Php %.2lf\n", total_bill);
+    printf("%.2lf", com_sales);
     
 }
