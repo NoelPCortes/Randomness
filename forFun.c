@@ -1,30 +1,20 @@
 #include <stdio.h>
-#include <math.h>
 
 int main(){
     
-    double amount_entered, remaining_balance = 0;
+    int i, j;
     
-    do{
-        scanf("%lf", &amount_entered);
-        remaining_balance += amount_entered;
-        if(remaining_balance < 0) {
-            printf("Warning: Issuance amount exceeds balance. Transaction declined.\n\n");
-            remaining_balance -= amount_entered;
-            printf("Current Balance = Php%.2lf\n", remaining_balance);
-        } else if(amount_entered > 0) {
-            printf("Transaction: Deposit\n");
-            printf("Amount entered: Php %.2lf\n", amount_entered);
-            printf("Current Balance: Php %.2lf\n", remaining_balance);
-        } else if(amount_entered < 0) {
-            printf("Transaction: Issuance\n");
-            printf("Amount entered: Php %.2lf\n", amount_entered * -1);
-            printf("Current Balance: Php %.2lf\n", remaining_balance);
-        } else {
-            break;
+    for(i = 0; i < 6; i++){
+        for(j = 0; j < 6; j++){
+            if(i == j) {
+                printf("%2d ", 0);
+            } else if(j > i) {
+                printf("%2d ", -1);
+            } else {
+                printf("%2d ", 1);
+            }
         }
-    }while(amount_entered != 0);
-    
-    printf("End of transactions.\n");
+        printf("\n");
+    }
     
 }
