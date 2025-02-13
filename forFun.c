@@ -1,20 +1,21 @@
 #include <stdio.h>
-
-int printNumbers(int num);
+#include <string.h>
+struct student {
+    char ID[10];
+    char first_Name[10];
+    char last_Name[10];
+    char course[10];
+    char birthdate[8];
+    int year;
+    int age;
+};
 
 int main() {
 
-    int numArg;
+    struct student student1;
 
-    printf("Enter an integer to be factorialized: ");
-    scanf("%d", &numArg);
+    printf("Enter student ID: ");
+    fgets("student1.ID", 10, stdin);
 
-    int res = printNumbers(numArg);
-    
-    printf("%d\n", res);
 
-}
-
-int printNumbers(int num) {
-    
 }
