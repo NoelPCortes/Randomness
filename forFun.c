@@ -12,9 +12,9 @@ struct student {
 
 int main() {
 
-    struct student student1;
+    struct student student1 = {"24-0589-569", "Noel", "Cortes", "BSIT", "12-16-2005", 1, 19};
 
-    printf("Enter student ID: ");
+    /*printf("Enter student ID: ");
     fgets(student1.ID, sizeof(student1.ID), stdin);
     student1.ID[strlen(student1.ID)-1] = '\0';
 
@@ -38,7 +38,7 @@ int main() {
     scanf("%d", &student1.year);
 
     printf("Enter student age: ");
-    scanf("%d", &student1.age);
+    scanf("%d", &student1.age);*/
 
     printf("Student ID: %s\n", student1.ID);
     printf("Student first name: %s\n", student1.first_Name);
@@ -46,6 +46,16 @@ int main() {
     printf("Student course: %s\n", student1.course);
     printf("Student birthdate: %s\n", student1.birthdate);
     printf("Student year: %d\n", student1.year);
-    printf("Student age: %d\n", student1.age);
+    printf("Student age: %d\n\n", student1.age);
+
+    struct student student2 = {"23-3030-781", "Isaac", "Cortes", "BSIT", "12-22-2004", 2, 20};
+
+    printf("Student ID: %s\n", student2.ID);
+    printf("Student first name: %s\n", student2.first_Name);
+    printf("Student last name: %s\n", student2.last_Name);
+    printf("Student course: %s\n", student2.course);
+    printf("Student birthdate: %s\n", student2.birthdate);
+    printf("Student year: %d\n", student2.year);
+    printf("Student age: %d\n\n", student2.age);
     
 }
