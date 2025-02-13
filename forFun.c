@@ -40,4 +40,12 @@ int main() {
     printf("Enter student age: ");
     scanf("%d", &student1.age);
 
+    printf("Student ID: %s\n", student1.ID);
+    printf("Student first name: %s\n", student1.first_Name);
+    printf("Student last name: %s\n", student1.last_Name);
+    printf("Student course: %s\n", student1.course);
+    printf("Student birthdate: %s\n", student1.birthdate);
+    printf("Student year: %d\n", student1.year);
+    printf("Student age: %d\n", student1.age);
+
 }
