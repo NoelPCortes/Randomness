@@ -4,10 +4,17 @@ int printNumbers(int num);
 
 int main() {
 
-    printNumbers(50);
+    int numArg;
+
+    printf("Enter an integer to be factorialized: ");
+    scanf("%d", &numArg);
+
+    int res = printNumbers(numArg);
     
+    printf("%d\n", res);
+
 }
 
 int printNumbers(int num) {
-    printf("%d ", printNumbers(num - 1));
+    
 }
