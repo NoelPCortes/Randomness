@@ -1,27 +1,32 @@
 #include <stdio.h>
-
-int Fibonacci(int );
+#include <stdlib.h>
 
 int main(){
-
-    int numArg;
-
-    printf("Input number of terms for the Series (< 20) : ");
-    scanf("%d", &numArg);
-
-    printf("Fibonacci Series: ");
-
-    int i;
-
-    for(i = 0; i < numArg; i++){
-        printf("%d ", Fibonacci(i));
-    }
-
-}
-
-int Fibonacci(int num){
-    if(num == 1 || num == 0) {
+    
+    int arr_size_t;
+    
+    printf("Enter size of Array: ");
+    scanf("%d", &arr_size_t);
+    
+    int *arrArg = (int *)malloc(arr_size_t * sizeof(int));
+    if(arrArg == NULL){
+        printf("MEMORY ALLOCATION FAILED.\n");
         return 1;
     }
-    return Fibonacci(num - 1) + Fibonacci(num - 2);
+    
+    int i = 0;
+    
+    while(arr_size_t > 0){
+        scanf("%d", &arrArg[i]);
+        i++;
+        arr_size_t--;
+    }
+    
+    for(i = 0; i < arr_size_t; i++){
+        printf("%d\n", arrArg[i]);
+        printf("%p\n", (void*)&arrArg[i]);
+    }
+    
+    free(arrArg);
+    
 }
