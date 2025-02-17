@@ -1,32 +1,27 @@
-/*#include <stdio.h>
-#include <stdlib.h>
+/*Given the function prototype:  
 
-int main(){
-    
-    int arr_size_t;
-    
-    printf("Enter size of Array: ");
-    scanf("%d", &arr_size_t);
-    
-    int *arrArg = (int *)malloc(arr_size_t * sizeof(int));
-    if(arrArg == NULL){
-        printf("MEMORY ALLOCATION FAILED.\n");
-        return 1;
-    }
-    
-    int i = 0;
-    
-    while(arr_size_t > 0){
-        scanf("%d", &arrArg[i]);
-        i++;
-        arr_size_t--;
-    }
-    
-    for(i = 0; i < arr_size_t; i++){
-        printf("%d\n", arrArg[i]);
-        printf("%p\n", (void*)&arrArg[i]);
-    }
-    
-    free(arrArg);
-    
-}*/
+     float convertToCm(float  feet, float  inches);
+
+//define a function that will accept two input parameters: distance in feet and distance in inches.  Convert distance_in_feet to centimeters and the distance in INCHES to centimeters.  Return the total converted distances in centimeters.
+
+ //define the function main() to allow the user to input distances in feet and inches and output the returned result from function call to convertToCm */
+ 
+ #include <stdio.h>
+ 
+ float convertToCm(float feet, float inches);
+ 
+ int main(){
+     
+     float inch, feet;
+     
+     scanf("%f %f", &feet, &inch);
+     
+     double res = convertToCm(feet, inch);
+     
+     printf("%.2lf", res);
+     
+ }
+ 
+ float convertToCm(float feet, float inches){
+     return ((feet * 12) + inches) * 2.54;
+ }
