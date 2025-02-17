@@ -1,24 +1,24 @@
 #include <stdio.h>
 
-int exponent(int numA, int numB);
+int sumOfDigits(int );
 
 int main() {
+    int numArg;
 
-    int numArgA, numArgB;
+    scanf("%d", &numArg);
 
-    scanf("%d %d", &numArgA, &numArgB);
-
-    int res = exponent(numArgA, numArgB);
+    int res = sumOfDigits(numArg);
 
     printf("%d\n", res);
 
 }
 
-int exponent(int numA, int numB){
-    int a;
-    int res = 1;
-    for(a = 1; a <= numB; a++){
-        res *= numA;
+int sumOfDigits(int num){
+    int sum = 0;
+    while(num != 0){
+        int temp = num % 10;
+        num /= 10;
+        sum += temp;
     }
-    return res;
+    return sum;
 }
