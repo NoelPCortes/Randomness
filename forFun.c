@@ -1,19 +1,27 @@
 #include <stdio.h>
 
-int factorial(int n){
-    if(n == 1) {
-        return n;
-    } else {
-        return n * factorial(n - 1);
-    }
+float Area_Rect(float length, float width){
+    return length * width;
 }
 
-int main(){
+float Pero_Rect(float length, float width){
+    return 2 * (length + width);
+}
+
+float Area_Tria(float length, float width){
+    return (length * width) / 2;
+}
+
+int main() {
     
-    int num;
+    float numA, numB;
     
-    scanf("%d", &num);
+    scanf("%f", &numA);
+    scanf("%f", &numB);
     
-    printf("%d\n", factorial(num));
-    
+    printf("Area of a rectangle: %.2f\n", Area_Rect(numA,numB));
+    printf("Perimeter of a rectangle: %.2f\n", Pero_Rect(numA,numB));
+    printf("Area of a triangle: %.2f\n", Area_Tria(numA,numB));
+
+    return 0;
 }
