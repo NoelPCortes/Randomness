@@ -1,27 +1,46 @@
 #include <stdio.h>
+#include <ctype.h>
 
-float Area_Rect(float length, float width){
-    return length * width;
+int computeSum(int num1, int num2);
+int computeDifference(int num1, int num2);
+int computeProduct(int num1, int num2);
+float computeQuotient(int num1, int num2);
+
+int main(){
+    
+    char op;
+    int numA, numB;
+    
+    op = getchar();
+    if(op == '\0'){
+        op = getchar();
+    }
+    
+    scanf("%d", &numA);
+    scanf("%d", &numB);
+    
+    switch(op){
+        case '+': printf("Sum = %d", computeSum(numA,numB)); break;
+        case '-': printf("Difference = %d", computeDifference(numA,numB)); break;
+        case '*': printf("Product = %d", computeProduct(numA,numB)); break;
+        case '/': printf("Quotient = %.2f", computeQuotient(numA,numB)); break;
+        default: printf("Invalid operator!");
+    }
+    
 }
 
-float Pero_Rect(float length, float width){
-    return 2 * (length + width);
+int computeSum(int num1, int num2){
+    return num1 + num2;
 }
 
-float Area_Tria(float length, float width){
-    return (length * width) / 2;
+int computeDifference(int num1, int num2){
+    return num1 - num2;
 }
 
-int main() {
-    
-    float numA, numB;
-    
-    scanf("%f", &numA);
-    scanf("%f", &numB);
-    
-    printf("Area of a rectangle: %.2f\n", Area_Rect(numA,numB));
-    printf("Perimeter of a rectangle: %.2f\n", Pero_Rect(numA,numB));
-    printf("Area of a triangle: %.2f\n", Area_Tria(numA,numB));
+int computeProduct(int num1, int num2){
+    return num1 * num2;
+}
 
-    return 0;
+float computeQuotient(int num1, int num2){
+    return (float)num1 / num2;
 }
