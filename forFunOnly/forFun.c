@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
-
-int computeSum(int num1, int num2);
-int computeDifference(int num1, int num2);
-int computeProduct(int num1, int num2);
-float computeQuotient(int num1, int num2);
+#include "libraryFun.h"
 
 int main(){
     
@@ -27,20 +23,4 @@ int main(){
         default: printf("Invalid operator!");
     }
     
-}
-
-int computeSum(int num1, int num2){
-    return num1 + num2;
-}
-
-int computeDifference(int num1, int num2){
-    return num1 - num2;
-}
-
-int computeProduct(int num1, int num2){
-    return num1 * num2;
-}
-
-float computeQuotient(int num1, int num2){
-    return (float)num1 / num2;
 }
