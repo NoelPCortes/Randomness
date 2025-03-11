@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int *getArr(int value){
 
@@ -9,8 +10,6 @@ int *getArr(int value){
     }
 
     return arr;
-
-    free(arr);
 }
 
 int main(){
@@ -22,6 +21,8 @@ int main(){
     for(int i = 0; i < 5; i++){
         printf("Result[%d]: %d\n", i , result[i]);   
     }
+
+    free(result);
 
     return 0;
 }
