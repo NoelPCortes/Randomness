@@ -1,28 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
+/*A single line containing the integer K which 
+is the length of the longest sequence of repeated digits.
 
-int *getArr(int value){
+Ex.
 
-    int *arr = malloc(sizeof(int) * 5);
-
-    for(int i = 0; i < 5; i++){
-        arr[i] = value;
-    }
-
-    return arr;
-}
-
-int main(){
-    
-    int arr[] = {1,2,3,4,5};
-    
-    int *result = getArr(4);
-
-    for(int i = 0; i < 5; i++){
-        printf("Result[%d]: %d\n", i , result[i]);   
-    }
-
-    free(result);
-
-    return 0;
-}
+111 = 3
+100001 = 4
+5232 = 1
+22344442 = 4
+5666666 = 6*/
