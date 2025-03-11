@@ -1,18 +1,27 @@
 #include <stdio.h>
 
-int computeSum(int *, int *);
+int *getArr(int value){
 
-int main(){
+    int *arr = malloc(sizeof(int) * 5);
 
-    int num1 = 5, num2 = 10;
+    for(int i = 0; i < 5; i++){
+        arr[i] = value;
+    }
 
-    int (*ptrFunc)(int *, int*) = NULL;//Pointer function to computeSum
-    ptrFunc = &computeSum;//Storing the memory address of computeSum function
+    return arr;
 
-    printf("Sum of %d and %d is %d\n", num1, num2, (*ptrFunc)(&num1, &num2));//How to call a function pointer
-
+    free(arr);
 }
 
-int computeSum(int *n1, int *n2){
-    return *n1 + *n2;//return the memory address of n1 and n2
+int main(){
+    
+    int arr[] = {1,2,3,4,5};
+    
+    int *result = getArr(4);
+
+    for(int i = 0; i < 5; i++){
+        printf("Result[%d]: %d\n", i , result[i]);   
+    }
+
+    return 0;
 }
