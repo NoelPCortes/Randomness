@@ -1,17 +1,25 @@
-#include "libraryFun.h"
+#include <stdio.h>
 
-int computeSum(int num1, int num2){
-    return num1 + num2;
+void oddUpCount(int);
+
+int main(){
+    
+    int numA;
+    
+    printf("Enter the value of N: ");
+    scanf("%d", &numA);
+    
+    printf("Odd numbers from 1 to %d are: ", numA);
+    
+    oddUpCount(numA);
+    
 }
 
-int computeDifference(int num1, int num2){
-    return num1 - num2;
-}
-
-int computeProduct(int num1, int num2){
-    return num1 * num2;
-}
-
-float computeQuotient(int num1, int num2){
-    return (float)num1 / num2;
+void oddUpCount(int n1){
+    if(n1 % 2 != 0 && n1 > 0){
+        oddUpCount(n1 - 1);
+        printf("%d ", n1);
+    } else if(n1 > 0){
+        oddUpCount(n1 - 1);
+    }
 }
