@@ -1,25 +1,22 @@
 #include <stdio.h>
-
-void oddUpCount(int);
+#include <string.h>
 
 int main(){
     
-    int numA;
+    char arrArg[15];
     
-    printf("Enter the value of N: ");
-    scanf("%d", &numA);
+    fgets(arrArg, sizeof(arrArg), stdin);
+    arrArg[strlen(arrArg)-1] = '\0';
     
-    printf("Odd numbers from 1 to %d are: ", numA);
+    int a, ctr = 0;
     
-    oddUpCount(numA);
-    
-}
-
-void oddUpCount(int n1){
-    if(n1 % 2 != 0 && n1 > 0){
-        oddUpCount(n1 - 1);
-        printf("%d ", n1);
-    } else if(n1 > 0){
-        oddUpCount(n1 - 1);
+    for(a = 0; a < 15; a++){
+        if(arrArg[a] == 'a' ||arrArg[a] == 'e' ||arrArg[a] == 'i' ||arrArg[a] == 'o' ||arrArg[a] == 'u' || arrArg[a] == 'A' ||arrArg[a] == 'E' ||arrArg[a] == 'I' ||arrArg[a] == 'O' ||arrArg[a] == 'U') {
+            printf("%c\n", arrArg[a]);
+            ctr++;
+        }
     }
+    
+    printf("%d\n", ctr);
+    
 }
