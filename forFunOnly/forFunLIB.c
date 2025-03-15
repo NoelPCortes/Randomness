@@ -1,22 +1,29 @@
 #include <stdio.h>
-#include <string.h>
 
 int main(){
     
-    char arrArg[15];
+    int sizeArr;
     
-    fgets(arrArg, sizeof(arrArg), stdin);
-    arrArg[strlen(arrArg)-1] = '\0';
+    scanf("%d", &sizeArr);
     
-    int a, ctr = 0;
+    int arrArg[sizeArr], a, resHigh , resLow;
     
-    for(a = 0; a < 15; a++){
-        if(arrArg[a] == 'a' ||arrArg[a] == 'e' ||arrArg[a] == 'i' ||arrArg[a] == 'o' ||arrArg[a] == 'u' || arrArg[a] == 'A' ||arrArg[a] == 'E' ||arrArg[a] == 'I' ||arrArg[a] == 'O' ||arrArg[a] == 'U') {
-            printf("%c\n", arrArg[a]);
-            ctr++;
+    for(a = 0; a < sizeArr; a++){
+        scanf("%d",&arrArg[a]);
+    }
+    
+    resHigh = arrArg[0];
+    resLow = arrArg[0];
+    
+    for(a = 0; a < sizeArr; a++){
+        if(resHigh < arrArg[a]) {
+            resHigh = arrArg[a];
+        }
+        if(resLow > arrArg[a]) {
+            resLow = arrArg[a];
         }
     }
     
-    printf("%d\n", ctr);
+    printf("%d\n%d", resHigh, resLow);
     
 }
