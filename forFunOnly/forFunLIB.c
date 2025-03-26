@@ -2,28 +2,28 @@
 
 int main(){
     
-    int sizeArr;
-    
-    scanf("%d", &sizeArr);
-    
-    int arrArg[sizeArr], a, resHigh , resLow;
-    
-    for(a = 0; a < sizeArr; a++){
-        scanf("%d",&arrArg[a]);
-    }
-    
-    resHigh = arrArg[0];
-    resLow = arrArg[0];
-    
-    for(a = 0; a < sizeArr; a++){
-        if(resHigh < arrArg[a]) {
-            resHigh = arrArg[a];
-        }
-        if(resLow > arrArg[a]) {
-            resLow = arrArg[a];
+    int pebis[10] = {1,2,3,4,5,6,7,8,9,10};
+
+    int a, temp;
+
+    for(a = 0; a < 10; a++){
+        if(pebis[a] == 10){
+            temp = pebis[a];
+            pebis[a] = pebis[0];
+            pebis[0] = temp;
         }
     }
-    
-    printf("%d\n%d", resHigh, resLow);
-    
+
+    for(a = 0; a < 10; a++){
+        printf("%d\n", pebis[a]);
+    }
+
 }
+
+/*
+Element 1 = 1;
+Element 2 = 4;
+Element 3 = 9;
+Element 4 = 16;
+Element 5 = 25;
+*/
